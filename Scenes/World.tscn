@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bou5ysufk7r2t"]
+[gd_scene load_steps=11 format=3 uid="uid://bou5ysufk7r2t"]
 
 [ext_resource type="Texture2D" uid="uid://bh87m075dfkny" path="res://Rocky Roads/Tilesets/tileset_forest.png" id="1_sxqnv"]
 [ext_resource type="Texture2D" uid="uid://g5coclks2133" path="res://Rocky Roads/Deco/water_a_8frames.png" id="1_urmur"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bieb3ge770m6n" path="res://Rocky Roads/Backgrounds/trees.png" id="2_av0wu"]
 [ext_resource type="Texture2D" uid="uid://dbqgglx1aec6j" path="res://Rocky Roads/Backgrounds/mountains_b.png" id="2_kakts"]
 [ext_resource type="Texture2D" uid="uid://46yw6mndjjq4" path="res://Rocky Roads/Deco/clouds.png" id="4_wj5oq"]
+[ext_resource type="PackedScene" uid="uid://cu8resp0sq08u" path="res://Scenes/Coin.tscn" id="7_b6132"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wjg7n"]
 texture = ExtResource("1_sxqnv")
@@ -177,6 +178,15 @@ layer_0/tile_data = PackedInt32Array(-262150, 2, 0, -262149, 65538, 0, -262148, 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-11, -8)
 zoom = Vector2(3, 3)
+
+[node name="Coin" parent="." instance=ExtResource("7_b6132")]
+position = Vector2(-138, -6)
+
+[node name="Coin2" parent="." instance=ExtResource("7_b6132")]
+position = Vector2(42, 26)
+
+[node name="Coin3" parent="." instance=ExtResource("7_b6132")]
+position = Vector2(158, -6)
 
 [node name="Player" parent="." instance=ExtResource("2_81bfy")]
 position = Vector2(-11, -8)
