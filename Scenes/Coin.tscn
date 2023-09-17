@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cu8resp0sq08u"]
 
-[ext_resource type="Script" path="res://Coin2D.gd" id="1_h1xa8"]
+[ext_resource type="Script" path="res://Scripts/Coin2D.gd" id="1_23hib"]
 [ext_resource type="Texture2D" uid="uid://bjeaycquh4y2l" path="res://Rocky Roads/Objects/coin_gold.png" id="1_lgbq2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ishgj"]
@@ -47,7 +47,7 @@ _data = {
 [node name="Coin" type="Node2D"]
 
 [node name="Coin2D" type="Area2D" parent="."]
-script = ExtResource("1_h1xa8")
+script = ExtResource("1_23hib")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Coin2D"]
 shape = SubResource("CircleShape2D_ishgj")
