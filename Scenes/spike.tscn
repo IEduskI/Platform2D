@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvup5uhdr6wnc"]
+
+[ext_resource type="Texture2D" uid="uid://cdijamosp3pbf" path="res://Rocky Roads/Enemies/spikes.png" id="1_0xwo0"]
+[ext_resource type="Script" path="res://Scripts/Spikes.gd" id="1_k4y4y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bndw1"]
+size = Vector2(12, 9.5)
+
+[node name="Spike" type="Node2D"]
+
+[node name="Spikes" type="Area2D" parent="." groups=["Spikes"]]
+script = ExtResource("1_k4y4y")
+
+[node name="Sprite2D" type="Sprite2D" parent="Spikes"]
+texture = ExtResource("1_0xwo0")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes"]
+position = Vector2(0, 2.75)
+shape = SubResource("RectangleShape2D_bndw1")
+
+[connection signal="body_entered" from="Spikes" to="Spikes" method="_on_body_entered"]

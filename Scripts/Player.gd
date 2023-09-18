@@ -3,12 +3,17 @@ extends CharacterBody2D
 const moveSpeed = 40
 const maxSpeed = 70
 const jumpHeight = - 300
-const up= Vector2(0,-1)
-const gravity= 15
+const up = Vector2(0,-1)
+const gravity = 15
+var canvasLayer
 
 @onready var sprite = $Sprite2D
 @onready var animationPlayer=$AnimationPlayer
 var motion = Vector2()
+var lifes = 3
+
+func _ready():
+	canvasLayer = get_tree().get_first_node_in_group("Canvas")
 
 func _physics_process(delta):
 	velocity.y += gravity
@@ -34,3 +39,20 @@ func _physics_process(delta):
 		if friction == true:
 			velocity.x = lerp(0,0,1)
 	motion = move_and_slide()
+
+
+func receiveDamage(enemyPosX):
+	if position.x < enemyPosX:
+		velocity.x = -400
+		velocity.y = -200
+		
+	if position.x > enemyPosX:
+		velocity.x = 400
+		velocity.y = 200
+		
+	lifes -= 1
+	print("lose 1 life, left: "+str(lifes))
+	## Call to func hearts in canvas
+	canvasLayer.handleHearts(lifes)
+	if lifes <= 0:
+		get_tree().reload_current_scene()

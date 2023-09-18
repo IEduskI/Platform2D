@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bm45thq5yc1i4"]
+[gd_scene load_steps=9 format=3 uid="uid://d3jqjswuw1hly"]
 
-[ext_resource type="Texture2D" uid="uid://bycban7ffirqa" path="res://Rocky Roads/Enemies/slime_blue.png" id="1_ibekf"]
-[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_oo4qa"]
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_mxpe6"]
+[ext_resource type="Texture2D" uid="uid://snjbt5ayod3x" path="res://Rocky Roads/Enemies/slime_red.png" id="2_iup0l"]
 
 [sub_resource type="Animation" id="Animation_1lwvu"]
 resource_name = "Idle"
@@ -58,14 +58,17 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lfap3"]
-size = Vector2(16, 10)
+size = Vector2(14, 7)
 
-[node name="Player2D" type="CharacterBody2D" groups=["Player"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajxr8"]
+size = Vector2(16, 7)
+
+[node name="Enemy2D" type="CharacterBody2D" groups=["Enemy"]]
 collision_mask = 4
-script = ExtResource("1_oo4qa")
+script = ExtResource("1_mxpe6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_ibekf")
+texture = ExtResource("2_iup0l")
 hframes = 5
 vframes = 2
 
@@ -76,5 +79,19 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3)
+position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_lfap3")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_ajxr8")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(-10, 2)
+scale = Vector2(0.2, 0.2)
+target_position = Vector2(0, 40)
+collision_mask = 4
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

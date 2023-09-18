@@ -46,7 +46,7 @@ _data = {
 
 [node name="Coin" type="Node2D"]
 
-[node name="Coin2D" type="Area2D" parent="."]
+[node name="Coin2D" type="Area2D" parent="." groups=["Coin2D"]]
 script = ExtResource("1_23hib")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Coin2D"]
